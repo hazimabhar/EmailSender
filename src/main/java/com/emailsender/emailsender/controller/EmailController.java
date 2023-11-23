@@ -1,6 +1,7 @@
 package com.emailsender.emailsender.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,5 +25,11 @@ public class EmailController {
     @PostMapping("/sendEmail/attachment")
     public String sendEmailWithAttachment(@RequestBody EmailDetails emailDetails){
         return emailService.sendMailWithAttachment(emailDetails);
+    }
+
+    @PostMapping("/testsend")
+    public ResponseEntity<?> testSend()
+    {
+        return ResponseEntity.ok(emailService.testSend());
     }
 }
