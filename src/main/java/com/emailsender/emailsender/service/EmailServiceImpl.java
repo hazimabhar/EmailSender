@@ -94,18 +94,10 @@ public class EmailServiceImpl implements EmailService {
         else{
 
             for (Bug bug : unsettleBugs) {
-                // System.out.println(bug.getBugId());
-                // System.out.println(bug.getAssignedBy());
-                // System.out.println(bug.getAssigneeTo());
-                // System.out.println(bug.getAssigneeToEmail());
-                // System.out.println(bug.getCustomerName());
-                // System.out.println(bug.getSummary());
-
 
                 String greeting = "Hello " + bug.getAssigneeTo() +",";
                 String reminder = "This email is a remider that the bug with ID " + bug.getBugId() + " in project " + bug.getProjectName() + " is still not resolved.";
                 String closure = "Thanks and Regards, \n" + bug.getAssignedBy();
-
 
                 SimpleMailMessage mailMessage = new SimpleMailMessage();
 
@@ -123,11 +115,8 @@ public class EmailServiceImpl implements EmailService {
                     );
 
                 javaMailSender.send(mailMessage);
-
             }
         }
-
-
        return ResponseEntity.ok(unsettleBugs);
     }
 }
